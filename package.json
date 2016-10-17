@@ -1,0 +1,55 @@
+{
+  "name": "hubot-rocketchat-listener",
+  "description": "Hubot script that listens for certain rocketchat events",
+  "version": "0.0.1",
+  "author": {
+    "name": "Tim Kinnane",
+    "email": "tim@nestedcode.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "rocketchat",
+    "Rocket.Chat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garychapman/hubot-rocketchat-listener.git"
+  },
+  "bugs": {
+    "url": "https://github.com/garychapman/hubot-rocketchat-listener/issues"
+  },
+  "dependencies": {
+    "coffee-script": "^1.9.0"
+  },
+  "main": "index.coffee",
+  "scripts": {
+    "test": "gulp test",
+    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "gitHead": "153616c25711943dd361bbe0f5fa70564ebf56df",
+  "homepage": "https://github.com/garychapman/hubot-rocketchat-listener#readme",
+  "_id": "hubot-rocketchat-listener@0.0.1",
+  "_shasum": "1460ce43d4466bff61b4127f9c208aecb06d8866",
+  "_from": "hubot-rocketchat-listener@0.0.1",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.11.1",
+  "_npmUser": {
+    "name": "garychapman",
+    "email": "gary.chapman@4thparty.com.au"
+  },
+  "maintainers": [
+    {
+      "name": "garychapman",
+      "email": "gary.chapman@4thparty.com.au"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/hubot-rocketchat-listener-0.0.1.tgz_1465460862155_0.37888075155206025"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/hubot-rocketchat-listener/-/hubot-rocketchat-listener-0.0.1.tgz",
+  "readme": "ERROR: No README data found!"
+}
