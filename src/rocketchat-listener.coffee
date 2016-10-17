@@ -1,5 +1,15 @@
 # Description
-#   Hubot script to listen for certain rocket.chat streamer events and respond to them.
+#   Hubot script to listen for certain rocket.chat events and respond to them.
+#
+# Configuration:
+#   ROCKETCHAT_USER so the bot can introduce itself using its @username
+#   WELCOME_MESSAGE String, what the bot says to new users
+#   DIRECT_WELCOME Bool (default true), welcome users by direct message, instead of posting in the room they joined
+#   GLOBAL_WELCOME Bool (default true), welcome only once per user across all rooms, false will welcome once per room
+#
+# Notes:
+#   TODO: Allow setting a welcome messsage by environment OR a command
+#   TODO: Allow role authentication to decide who can set a new welcome message
 #
 # Author:
 #   Gary Chapman @ 4thParty
