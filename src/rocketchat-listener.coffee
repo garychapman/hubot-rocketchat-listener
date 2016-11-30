@@ -19,13 +19,13 @@ _customRegCollection = 'stream-custom-registration'
 module.exports = (robot) ->
     debugger
 
-    robot.adapter.chatdriver.setupReactiveUsersList = (changedUserCallback) =>
+
+    robot.adapter.chatdriver.setupReactiveList = (changedUserCallback) =>
 
         @customRegDb = robot.adapter.chatdriver.asteroid.getCollection _customRegCollection
         messageRq = @customRegDb.reactiveQuery {}
 
         messageRq.on "change", (id) =>
-            debugger
             changedUserQuery = @customRegDb.reactiveQuery {"_id": id}
             console.log 'This changed: ', id
             console. log messageRq.result
@@ -34,7 +34,7 @@ module.exports = (robot) ->
                 changedUser = changedUserQuery.result[0]
 
                 if changedUser.args?
-                    changedUserCallback changedUser.args[0], changedUser.args[1]
+                    changedUserCallback changedUser.args[0]
 
     robot.adapter.chatdriver.prepCustomRegistrationSubscriptions = =>
         robot.logger.info "Preparing Custom Registration Subscription..."
@@ -44,20 +44,35 @@ module.exports = (robot) ->
 
     return robot.adapter.chatdriver.prepCustomRegistrationSubscriptions()
     .catch((subErr) =>
-        robot.logger.error "Unable to subscribe to activeUsers: #{JSON.stringify(subErr)} Reason: #{subErr.reason}"
+        robot.logger.error "Unable to subscribe to active list: #{JSON.stringify(subErr)} Reason: #{subErr.reason}"
         throw subErr
     )
     .then(() =>
         robot.logger.info "Successfully subscribed to custom registration messages"
-        robot.adapter.chatdriver.setupReactiveUsersList (userName, regOptions) =>
+        robot.adapter.chatdriver.setupReactiveList (userInfo) =>
             debugger
-            msg = if regOptions?.skipped != true then "Thanks for completing your registration" else "You didn't complete your registration!" 
+            #msg = if regOptions?.skipped != true then "Thanks for completing your registration" else "You didn't complete your registration!" 
 
             envelope = {
                 user: {
-                    name: userName
+                    name: "gary"
                 }
             }
+
+            if !userInfo?.skipped
+                msg = """
+                    New resident registration...
+
+                    #{ userInfo.userName }
+                    Apartment #{ userInfo.apartment } - #{ userInfo.residentType }
+                    
+                    ```
+                    email    #{ userInfo.email }
+                    phone    #{ userInfo.mobile }
+                    language #{ userInfo.language }
+                    agent    #{ userInfo.agent }
+                    ```
+                """
 
             return robot.adapter.sendDirect(envelope, msg)
     )
