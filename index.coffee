@@ -46,6 +46,7 @@ class Listener
           if query.result && query.result.length > 0
 
               changedUser = query.result[0]
+              if changedUser.args?
               @callback changedUser?.args[0]
 
   prepCustomRegistrationSubscriptions: ->
