@@ -41,13 +41,15 @@ class Listener
 
       messageRq.on "change", (id) =>
           query = @customRegDb.reactiveQuery {"_id": id}
-          console.log 'This changed: ', id
-          console. log messageRq.result
+          
+          console.log messageRq.result
+          
           if query.result && query.result.length > 0
 
               changedUser = query.result[0]
+
               if changedUser.args?
-              @callback changedUser?.args[0]
+                @callback changedUser?.args[0]
 
   prepCustomRegistrationSubscriptions: ->
       @robot.logger.info "Preparing Custom Registration Subscription..."
