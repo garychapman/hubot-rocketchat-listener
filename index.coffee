@@ -46,15 +46,12 @@ class Listener
           
           if query.result && query.result.length > 0
 
-              changedUser = query.result[0]
-
-              if changedUser.args?
-                @callback changedUser?.args[0]
+              if query.result[0]?.args
+                @callback query.result[0].args[0]
 
   prepCustomRegistrationSubscriptions: ->
-      @robot.logger.info "Preparing Custom Registration Subscription..."
       msgsub = @robot.adapter.chatdriver.asteroid.subscribe @collectionName, @eventName, true
-      @robot.logger.info "Subscribing to #{@collectionName}"
+      @robot.logger.info "Subscribed to #{@collectionName}"
       return msgsub.ready
 
 module.exports = Listener
