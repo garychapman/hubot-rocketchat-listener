@@ -29,10 +29,10 @@ class Listener
         messageRq.on "change", (id) =>
             query = @customRegDb.reactiveQuery {"_id": id}
             
-        console.log messageRq.result
+            console.log messageRq.result
         
-        if query.result && query.result.length > 0 && query.result[0]?.args
-            @callback query.result[0].args[0]
+            args = query?.result?[0].args?[0]
+            @callback args if args
 
     prepCustomRegistrationSubscriptions: ->
         msgsub = @robot.adapter.chatdriver.asteroid.subscribe @collectionName, @eventName, true
