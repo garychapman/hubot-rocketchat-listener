@@ -8,7 +8,6 @@ const StreamListener = require('hubot-rocketchat-listener')
 
 async welcomeUser (user, isNewUser = true) {
 
-
 const listener = new StreamListener(
     robot, // hubot instance
     'stream-user-events', // stream to listen on
