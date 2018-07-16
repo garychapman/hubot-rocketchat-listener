@@ -6,8 +6,6 @@ Allows a hubot to subscribe to a Rocket.chat streamer and react when the streame
 ```
 const StreamListener = require('hubot-rocketchat-listener')
 
-async welcomeUser (user, isNewUser = true) {
-
 const listener = new StreamListener(
     robot, // hubot instance
     'stream-user-events', // stream to listen on
